@@ -27,6 +27,10 @@
               "z": 1,
               "hasOpenThreats": false,
               "outOfScope": false,
+              "isALog": true,
+              "storesCredentials": true,
+              "isEncrypted": true,
+              "isSigned": true,
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
@@ -263,6 +267,7 @@
               "id": "be7fc4e0-e1bb-4145-ad4d-2c6200848a9f",
               "z": 9,
               "hasOpenThreats": false,
+              "privilegeLevel": "",
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
@@ -362,6 +367,7 @@
               "id": "1ca8691a-80b9-4f59-a15f-602688f07503",
               "z": 13,
               "hasOpenThreats": false,
+              "isSigned": true,
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
@@ -524,6 +530,7 @@
               "id": "9c72537f-be73-46e6-9090-ca9be4bcb2da",
               "z": 19,
               "hasOpenThreats": false,
+              "isSigned": true,
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
@@ -595,11 +602,36 @@
                   "class": "element-text hasNoOpenThreats isInScope"
                 }
               }
+            },
+            {
+              "type": "tm.Boundary",
+              "smooth": true,
+              "source": {
+                "x": 350,
+                "y": 551
+              },
+              "target": {
+                "x": 608,
+                "y": 572
+              },
+              "vertices": [
+                {
+                  "x": 454,
+                  "y": 455
+                },
+                {
+                  "x": 572,
+                  "y": 467
+                }
+              ],
+              "id": "e07d1e4f-e8c9-4158-b62c-882c88ed09c3",
+              "z": 22,
+              "attrs": {}
             }
           ]
         },
         "size": {
-          "height": 604,
+          "height": 684.961669921875,
           "width": 1470
         }
       }
