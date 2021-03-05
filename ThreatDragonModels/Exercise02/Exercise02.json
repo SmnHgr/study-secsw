@@ -368,12 +368,14 @@
               "z": 13,
               "hasOpenThreats": false,
               "isSigned": true,
+              "outOfScope": true,
+              "reasonOutOfScope": "hosted/managed by OST",
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasNoOpenThreats isOutOfScope"
                 },
                 "text": {
-                  "text": "Web Application Config"
+                  "text": "Web Application Config\n(GitLab)"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -531,12 +533,14 @@
               "z": 19,
               "hasOpenThreats": false,
               "isSigned": true,
+              "outOfScope": true,
+              "reasonOutOfScope": "hosted/managed by OST",
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasNoOpenThreats isOutOfScope"
                 },
                 "text": {
-                  "text": "Domain Checker Config"
+                  "text": "Domain Checker Config\n(GitLab)"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
