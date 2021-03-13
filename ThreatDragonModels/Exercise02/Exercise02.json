@@ -165,7 +165,7 @@
                 },
                 {
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "High",
                   "type": "Tampering",
                   "title": "SQL Injection",
                   "description": "Malicious SQL statements are inserted into an entry field for execution. Entry fields in this application are:\n- searchable dns name\n- username / password\n- profile information",
@@ -178,6 +178,14 @@
                   "title": "Single point of failure",
                   "description": "Code on webserver has an error or hardware is broken",
                   "type": "Denial of service"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Missing security patches",
+                  "type": "Tampering",
+                  "description": "Attacker uses vulnerabilities in javascript or nodejs.",
+                  "mitigation": "- regular audits\n- must be a fix part of the operation tasks"
                 }
               ],
               "attrs": {
@@ -362,17 +370,35 @@
               "angle": 0,
               "id": "be7fc4e0-e1bb-4145-ad4d-2c6200848a9f",
               "z": 9,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "privilegeLevel": "",
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Missing security patches",
+                  "type": "Tampering",
+                  "mitigation": "- regular audits\n- must be a fix part of the operation tasks",
+                  "description": "Attacker uses vulnerabilities in javascript or nodejs."
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "title": "Service spoofing",
+                  "description": "Attacker sends updates of domains to the webserver and masquerades as the official runner",
+                  "mitigation": "- authentication required\n- uses certificates"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Domain\nChecker\n(Runner)"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
