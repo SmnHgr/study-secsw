@@ -50,22 +50,48 @@
                 "height": 80
               },
               "position": {
-                "x": 50,
-                "y": 50
+                "x": 10,
+                "y": 68
               },
               "angle": 0,
               "id": "936549ad-2290-45ed-9852-b30685fb46fa",
               "z": 2,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Cross-Site-Scripting (Stored XSS)",
+                  "type": "Tampering",
+                  "description": "Attacker can inject client-side scripts into web pages viewed by other users",
+                  "mitigation": "- input validation\n- output encoding\n- escaping\n- set same content security policy"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Cross Site Request Forgery Attack (XSRF)",
+                  "type": "Spoofing",
+                  "description": "Attacker uses deposited cookie in the browser of his victim to request some information or post a malicious formular.",
+                  "mitigation": "- set/use CSRF-Token in forms\n- use restrictive same origin policy"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Session Fixation",
+                  "type": "Elevation of privilege",
+                  "description": "An attacker hijack a valid user session. The attack explores a limitation in the way the web application manages the session ID, more specifically the vulnerable web application. When authenticating a user, it doesn’t assign a new session ID, making it possible to use an existent session ID. The attack consists of obtaining a valid session ID (e.g. by connecting to the application), inducing a user to authenticate himself with that session ID, and then hijacking the user-validated session by the knowledge of the used session ID.",
+                  "mitigation": "- session id isn't part of the url\n- each session gets a new random session id\n- session expires"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Browser"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -82,17 +108,45 @@
               "angle": 0,
               "id": "af06a78e-744b-4033-b6ba-cca2ce0afee0",
               "z": 4,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "outOfScope": false,
+              "threats": [
+                {
+                  "ruleId": "b2a6d40d-d3f8-4750-8e4d-c02cc84b13dc",
+                  "title": "DDoS",
+                  "type": "Denial of service",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "The web server is unavailable to users because of an attack of numerous compromised devices. The web server can no longer handle the number of requests.",
+                  "mitigation": "- install a loadbalancer in front of the webserver\n- enable and configure auto scaling for the process webserver\n- reduce the session timeout"
+                },
+                {
+                  "ruleId": "4adaa48a-0345-4533-a189-64c98c4420dd",
+                  "title": "Broken Autorisation",
+                  "type": "Spoofing",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Attacker gets access to non-puplic content by using a foreign identity",
+                  "mitigation": "- use strong authentication (username, password)\n- outsource the authentication service to cloud IAM provider"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "title": "SQL Injection",
+                  "description": "Malicious SQL statements are inserted into an entry field for execution. Entry fields in this application are:\n- searchable dns name\n- username / password\n- profile information",
+                  "mitigation": "- input validation"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Web\nApplication\n(API)"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -509,6 +563,7 @@
               ],
               "z": 18,
               "hasOpenThreats": false,
+              "isPublicNetwork": true,
               "attrs": {
                 ".marker-target": {
                   "class": "marker-target hasNoOpenThreats isInScope"
@@ -595,9 +650,10 @@
               "id": "6c4bd71f-e32f-4e76-8001-2f119eebea17",
               "z": 21,
               "hasOpenThreats": false,
+              "outOfScope": true,
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasNoOpenThreats isOutOfScope"
                 },
                 "text": {
                   "text": "DNS-Server"
@@ -631,6 +687,120 @@
               "id": "e07d1e4f-e8c9-4158-b62c-882c88ed09c3",
               "z": 22,
               "attrs": {}
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 298,
+                "y": 12
+              },
+              "angle": 0,
+              "id": "0c922408-859c-4e5e-863b-c055219ba22e",
+              "z": 23,
+              "hasOpenThreats": false,
+              "outOfScope": true,
+              "storesCredentials": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isOutOfScope"
+                },
+                "text": {
+                  "text": "IAM"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "smooth": true,
+              "source": {
+                "x": 375,
+                "y": 93
+              },
+              "target": {
+                "id": "af06a78e-744b-4033-b6ba-cca2ce0afee0"
+              },
+              "vertices": [
+                {
+                  "x": 369,
+                  "y": 203
+                }
+              ],
+              "id": "77d91b78-8fd1-45f3-bf7b-68a913dc2ce0",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Authentication\nresponse",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 24,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "smooth": true,
+              "source": {
+                "id": "af06a78e-744b-4033-b6ba-cca2ce0afee0"
+              },
+              "target": {
+                "id": "0c922408-859c-4e5e-863b-c055219ba22e"
+              },
+              "vertices": [
+                {
+                  "x": 305,
+                  "y": 163
+                }
+              ],
+              "id": "bf189783-5c4d-4a3b-a110-a081bf91cd74",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.5896647909506795,
+                    "offset": -44.217512357505285
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Authentication\nRequest",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 25,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
             }
           ]
         },
