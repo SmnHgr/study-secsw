@@ -25,21 +25,47 @@
               "angle": 0,
               "id": "115b2b39-e0d8-42ae-acae-b48a267f2c44",
               "z": 1,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "outOfScope": false,
               "isALog": true,
-              "storesCredentials": true,
+              "storesCredentials": false,
               "isEncrypted": true,
               "isSigned": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "title": "Single point of failure",
+                  "mitigation": "- several db instances installed and synchronized\n- hardware redundancy",
+                  "description": "Database has an error or hardware is broken"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "title": "Extensive User and User Group Privileges",
+                  "description": "Web server has a single user with privileges that doesn't actually need for its tasks (eg. create database, delete, create user)",
+                  "mitigation": "- restrict rights of a deployed user to it's defined functionalities\n- each system has its own user for the db or multiple for different tasks (Least common mechanism)"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Missing security patches",
+                  "mitigation": "- regular audits\n- must be a fix part of the operation tasks",
+                  "description": "Attacker uses vulnerabilities in the database software.",
+                  "type": "Tampering"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Database"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -81,6 +107,14 @@
                   "type": "Elevation of privilege",
                   "description": "An attacker hijack a valid user session. The attack explores a limitation in the way the web application manages the session ID, more specifically the vulnerable web application. When authenticating a user, it doesn’t assign a new session ID, making it possible to use an existent session ID. The attack consists of obtaining a valid session ID (e.g. by connecting to the application), inducing a user to authenticate himself with that session ID, and then hijacking the user-validated session by the knowledge of the used session ID.",
                   "mitigation": "- session id isn't part of the url\n- each session gets a new random session id\n- session expires"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "mitigation": "- disable the x-powered-by header\n- use generic cookie name",
+                  "description": "The X-Powered-By header and the default session cookie name can be extremely useful to an attacker for building site’s risk profile.",
+                  "title": "Internal Implementation Disclosure"
                 }
               ],
               "attrs": {
@@ -136,6 +170,14 @@
                   "title": "SQL Injection",
                   "description": "Malicious SQL statements are inserted into an entry field for execution. Entry fields in this application are:\n- searchable dns name\n- username / password\n- profile information",
                   "mitigation": "- input validation"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "mitigation": "- several db instances installed and synchronized\n- hardware redundancy",
+                  "title": "Single point of failure",
+                  "description": "Code on webserver has an error or hardware is broken",
+                  "type": "Denial of service"
                 }
               ],
               "attrs": {
